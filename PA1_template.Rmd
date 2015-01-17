@@ -6,7 +6,7 @@ output:
 ---
 **January 2015** repdata-010   
 
-### Set Options in R  
+**Set Options in R**     
         
 ```{r}
 ## Suppress Scientific Notation & Limit Decimals to 2 Places   
@@ -137,9 +137,9 @@ median(newSumOfSteps$steps)
 
 Yes  
 
-- Mean Value Ignoring Missing Values was `r mean(sumOfSteps$steps)`steps and  Mean Value With Missing Values Filled in is `r mean(newSumOfSteps$steps)`steps.   
+- Mean Value Ignoring Missing Values was `r mean(sumOfSteps$steps)` steps and  Mean Value With Missing Values Filled in is `r mean(newSumOfSteps$steps)` steps.   
 
-- Median Value Ignoring Missing Values was `r median(sumOfSteps$steps)` steps and  Median Value With Missing Values Filled in is `r median(newSumOfSteps$steps)`steps. 
+- Median Value Ignoring Missing Values was `r median(sumOfSteps$steps)` steps and  Median Value With Missing Values Filled in is `r median(newSumOfSteps$steps)` steps. 
 
 **What is the impact of imputing missing data on the estimates of the total daily number of steps?**   
 
@@ -168,9 +168,6 @@ newData$daytype <- as.factor(dayNames)
 ```{r}
 weekdays <- newData[newData$daytype == "weekday",]   
 meanOfWeekdays <- aggregate(weekdays["steps"], by=list("interval" = weekdays$interval), FUN=mean, na.rm=TRUE)
-```
-
-```{r}
 weekends <- newData[newData$daytype == "weekend",]
 meanOfWeekends <- aggregate(weekends["steps"], by=list("interval" = weekends$interval), FUN=mean, na.rm=TRUE)
 ```
@@ -179,9 +176,11 @@ meanOfWeekends <- aggregate(weekends["steps"], by=list("interval" = weekends$int
 
 ```{r plot4, fig.width=10, fig.height=12}
 par(mfrow=c(2,1))
-plot(meanOfWeekdays$interval, meanOfWeekdays$steps, type = "l", main = "Weekday", xlab = "5-minute interval", ylab = "Number of Steps", col = "blue")
+par(mar = c(2, 4, 2, 4))
+plot(meanOfWeekdays$interval, meanOfWeekdays$steps, type = "l", main = "Weekday", xlab = "", ylab = "Number of Steps", col = "blue")
+par(mar = c(5, 4, 2, 4))
 plot(meanOfWeekends$interval, meanOfWeekends$steps, type = "l", main = "Weekend", xlab = "5-minute interval", ylab = "Number of Steps", col = "red")
-```   
+```     
 
 ### R Session Information   
 
@@ -211,6 +210,6 @@ plot(meanOfWeekends$interval, meanOfWeekends$steps, type = "l", main = "Weekend"
 [3] rmarkdown_0.3.3   
 [4] tools_3.1.2    
 [5] yaml_2.1.13     
------------------------------------------------------------------  
+ 
 
 

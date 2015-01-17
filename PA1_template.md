@@ -1,7 +1,7 @@
 # Reproducible Research: Peer Assessment 1
 **January 2015** repdata-010   
 
-### Set Options in R  
+**Set Options in R**     
         
 
 ```r
@@ -189,9 +189,9 @@ median(newSumOfSteps$steps)
 
 Yes  
 
-- Mean Value Ignoring Missing Values was 9354.23steps and  Mean Value With Missing Values Filled in is 10766.19steps.   
+- Mean Value Ignoring Missing Values was 9354.23 steps and  Mean Value With Missing Values Filled in is 10766.19 steps.   
 
-- Median Value Ignoring Missing Values was 10395 steps and  Median Value With Missing Values Filled in is 10766.19steps. 
+- Median Value Ignoring Missing Values was 10395 steps and  Median Value With Missing Values Filled in is 10766.19 steps. 
 
 **What is the impact of imputing missing data on the estimates of the total daily number of steps?**   
 
@@ -222,10 +222,6 @@ newData$daytype <- as.factor(dayNames)
 ```r
 weekdays <- newData[newData$daytype == "weekday",]   
 meanOfWeekdays <- aggregate(weekdays["steps"], by=list("interval" = weekdays$interval), FUN=mean, na.rm=TRUE)
-```
-
-
-```r
 weekends <- newData[newData$daytype == "weekend",]
 meanOfWeekends <- aggregate(weekends["steps"], by=list("interval" = weekends$interval), FUN=mean, na.rm=TRUE)
 ```
@@ -235,7 +231,9 @@ meanOfWeekends <- aggregate(weekends["steps"], by=list("interval" = weekends$int
 
 ```r
 par(mfrow=c(2,1))
-plot(meanOfWeekdays$interval, meanOfWeekdays$steps, type = "l", main = "Weekday", xlab = "5-minute interval", ylab = "Number of Steps", col = "blue")
+par(mar = c(2, 4, 2, 4))
+plot(meanOfWeekdays$interval, meanOfWeekdays$steps, type = "l", main = "Weekday", xlab = "", ylab = "Number of Steps", col = "blue")
+par(mar = c(5, 4, 2, 4))
 plot(meanOfWeekends$interval, meanOfWeekends$steps, type = "l", main = "Weekend", xlab = "5-minute interval", ylab = "Number of Steps", col = "red")
 ```
 
@@ -269,6 +267,6 @@ plot(meanOfWeekends$interval, meanOfWeekends$steps, type = "l", main = "Weekend"
 [3] rmarkdown_0.3.3   
 [4] tools_3.1.2    
 [5] yaml_2.1.13     
------------------------------------------------------------------  
+ 
 
 
